@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+canvas {
+    display: block;
+}
+
+.arrow-horizontal {
+    width: 30px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /**/
+    background-color: burlywood;
+}
+
+.arrow-vertical {
+    width: 100px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /**/
+    background-color: cadetblue;
+}
+
+.arrow-img-horizontal {
+    width: 20px;
+    height: auto;
+    margin: 5px;
+}
+
+.arrow-img-vertical {
+    width: 20px;
+    height: auto;
+    margin: 5px;
+    transform: rotate(90deg);
+}
+
+#right {
+    position: absolute;
+    right: 10px;
+}
+
+#left {
+    position: absolute;
+    left: 10px;
+}
+
+#up {
+    position: absolute;
+    top: 10px;
+}
+
+#down {
+    position: absolute;
+    bottom: 10px;
+}
