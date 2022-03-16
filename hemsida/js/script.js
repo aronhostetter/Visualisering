@@ -50,7 +50,7 @@ function onMouseMove(event) {
     var intersects = raycaster.intersectsObjects(scene.children, true);
     for (var i = 0; i < intersects.length; i++) {
 
-        this.tl = new TimelineMax().delay(.3);
+        this.tl = new TimelineMax();
         this.tl.to(intersects[i].object.scale, 1, { x: 2, ease: Expo.easeOut })
         this.tl.to(intersects[i].object.scale, 1, { x: 2, ease: Expo.easeOut })
         this.tl.to(intersects[i].object.position, .5, { x: 2, ease: Expo.easeOut })
@@ -61,3 +61,29 @@ function onMouseMove(event) {
 window.addEventListener('mousemove', onMouseMove);
 
 render();
+
+const rightbutton = document.getElementById('right')
+const leftbutton = document.getElementById('left')
+const upbutton = document.getElementById('up')
+const downbutton = document.getElementById('down')
+
+function right() {
+    //vrid kamera 45 grader åt höger
+}
+
+function left() {
+    //vrid kamera 45 grader åt vänster
+}
+
+function up() {
+    //vrid kamera 45 grader uppåt
+}
+
+function down() {
+    //vrid kamera 45 grader neråt
+}
+
+rightbutton.addEventListener('click', right)
+rightbutton.addEventListener('click', left)
+rightbutton.addEventListener('click', up)
+rightbutton.addEventListener('click', down)
