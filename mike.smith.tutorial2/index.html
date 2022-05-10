@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MS.2</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <script src="./three.js"></script>
+    <script type="module" src="./GLTFLoader.js"></script>
+
+    <script>
+        import {
+            GLTFLoader
+        } from "./GLTFLoader.js";
+
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, .01, 1000);
+
+        // controls = new THREE.OrbitControls(camera);
+        // controls.addEventListener('change', renderer);
+
+        var renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        var geometry = new THREE.BoxGeometry();
+        var material = new THREE.MeshLambertMaterial({
+            color: 0xFFFFFF
+        });
+        var cube = new THREE.Mesh(geometry, material);
+        var light = new THREE.HemisphereLight(0xFFFFFF, 0x000000, 1);
+        scene.add(cube);
+        scene.add(light);
+
+        camera.position.z = 5
+
+        var mx = 0;
+        var my = 0;
+
+        function saveMouse(event) {
+            mx = event.clientX;
+            my = event.clientY;
+        }
+
+        document.onmousemove = saveMouse;
+
+        window.addEventListener('resize', () => {
+            renderer.setSize((window.innerWidth /*-55*/ ), (window.innerHeight /*-55*/ ));
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        });
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            cube.rotation.y = mx / 200;
+            cube.rotation.x = my / 200;
+
+            renderer.render(scene, camera);
+
+        }
+        animate()
+    </script>
+
+</body>
+
+</html>
