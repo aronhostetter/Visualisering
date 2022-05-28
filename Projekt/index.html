@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJEKT</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header id="hej">
+        <h1>3D-VISUALISERING</h1>
+        <button id="resetbutton"><p>Reset</p></button>
+    </header>
+    <section id="visualsection">
+        <h2>Välj modell att visualisera</h2>
+        <article id="geometries">
+            <button id="slideleft" class="slidebutton" type="button"><img id="arrowleft" src="img/arrow-up-white.svg" alt="pil vänster"></button>
+            <ul id="buttonlist">
+                <li>
+                    <button id="capsule"><p>Capsule</p></button>
+                </li>
+                <li>
+                    <button id="pyramid"><p>Pyramid</p></button>
+                </li>
+                <li>
+                    <button id="dodecahedron"><p>Dodecahedron</p></button>
+                </li>
+                <li>
+                    <button id="torusknot"><p>Torusknot</p></button>
+                </li>
+            </ul>
+            <button id="slideright" class="slidebutton" type="button"><img id="arrowright" src="img/arrow-up-white.svg" alt="pil höger"></button>
+        </article>
+    </section>
+
+    <script src="./three.js"></script>
+    <!-- <script src="./OrbitControls.js"></script> -->
+    <script id="three-js" src="js/script.js"></script>
+</body>
+
+</html>
