@@ -12,29 +12,63 @@
 <body>
     <header id="hej">
         <h1>3D-VISUALISERING</h1>
-        <button id="resetbutton"><p>Reset</p></button>
     </header>
     <section id="visualsection">
         <h2>Välj modell att visualisera</h2>
-        <article id="geometries">
+        <section id="geometrysection">
             <button id="slideleft" class="slidebutton" type="button"><img id="arrowleft" src="img/arrow-up-white.svg" alt="pil vänster"></button>
-            <ul id="buttonlist">
-                <li>
-                    <button id="capsule"><p>Capsule</p></button>
-                </li>
-                <li>
-                    <button id="pyramid"><p>Pyramid</p></button>
-                </li>
-                <li>
-                    <button id="dodecahedron"><p>Dodecahedron</p></button>
-                </li>
-                <li>
-                    <button id="torusknot"><p>Torusknot</p></button>
-                </li>
-            </ul>
+            <article id="geometries">
+                <ul id="buttonlist">
+                    <li>
+                        <button id="box"><p>Box</p></button>
+                    </li>
+                    <li>
+                        <button id="cone"><p>Cone</p></button>
+                    </li>
+                    <li>
+                        <button id="icosahedron"><p>Icosahedron</p></button>
+                    </li>
+                    <li>
+                        <button id="capsule"><p>Capsule</p></button>
+                    </li>
+                    <li>
+                        <button id="pyramid"><p>Pyramid</p></button>
+                    </li>
+                    <li>
+                        <button id="torus"><p>Torus</p></button>
+                    </li>
+                    <li>
+                        <button id="dodecahedron"><p>Dodecahedron</p></button>
+                    </li>
+                    <li>
+                        <button id="torusknot"><p>Torusknot</p></button>
+                    </li>
+                </ul>
+            </article>
             <button id="slideright" class="slidebutton" type="button"><img id="arrowright" src="img/arrow-up-white.svg" alt="pil höger"></button>
-        </article>
+        </section>
     </section>
+
+    <aside>
+        <h2 class="second-h2">Alternativ</h2>
+
+        <section id="optionsection">
+            <article class="option">
+                <label for="lineoption"><p>Contourlines</p></label>
+                <input type="checkbox" class="checkbox" id="lineoption" value="Line">
+            </article>
+            <article class="option">
+                <label for="controloption"><p>Arrow control</p></label>
+                <input type="checkbox" class="checkbox" id="controloption" value="arrowcontrol">
+            </article>
+            <br>
+            <article class="option">
+                <label for="controloption"><p>Object color</p></label>
+                <input type="color" class="userinput" id="controloption" value="#444B59">
+            </article>
+        </section>
+        <button id="resetbutton"><p>Reset</p></button>
+    </aside>
 
     <script src="./three.js"></script>
     <!-- <script src="./OrbitControls.js"></script> -->

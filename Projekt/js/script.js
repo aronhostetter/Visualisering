@@ -1,9 +1,21 @@
-// Konstant för enkel variabelanvändning
-// const canvasheight = document.documentElement.style.getPropertyValue('--canvasheight')
-// const canvaswidth = document.documentElement.style.getPropertyValue('--canvaswidth')
+// SCROLLKNAPPAR
+
+const buttonRight = document.getElementById('slideright');
+const buttonLeft = document.getElementById('slideleft');
+const buttonlist = document.getElementById('buttonlist')
+
+buttonRight.onclick = function() {
+    buttonlist.scrollLeft += 700;
+};
+
+buttonLeft.onclick = function() {
+    buttonlist.scrollLeft -= 700;
+};
 
 
-const canvasheight = window.innerHeight - 175
+// THREE.JS
+
+const canvasheight = window.innerHeight - 300
 const canvaswidth = window.innerWidth
 
 var scene = new THREE.Scene();
@@ -20,9 +32,43 @@ renderer.setSize(canvaswidth, canvasheight);
 document.body.appendChild(renderer.domElement);
 
 var linecolor = 0xFFFFFF
-var objectcolor = 0xB0B8B4FF
+var objectcolor = 0x444B59
 
 var geometry = new THREE.BoxGeometry();
+
+// GEOMETRIES
+
+// BOX
+const box = document.getElementById('box');
+box.addEventListener('click', () => {
+    console.log("box");
+    geometry = new THREE.BoxGeometry(2, 2, 2);
+    changegeometry();
+})
+
+// CONE
+const cone = document.getElementById('cone');
+cone.addEventListener('click', () => {
+    console.log("cone");
+    geometry = new THREE.ConeGeometry(1.31, 2, 12);
+    changegeometry();
+})
+
+// ICOSAHEDRON
+const icosahedron = document.getElementById('icosahedron');
+icosahedron.addEventListener('click', () => {
+    console.log("icosahedron");
+    geometry = new THREE.IcosahedronGeometry(1.5, 0);
+    changegeometry();
+})
+
+// TORUS
+const torus = document.getElementById('torus');
+torus.addEventListener('click', () => {
+    console.log("torus");
+    geometry = new THREE.TorusGeometry(1, 0.4, 15, 60);
+    changegeometry();
+})
 
 // CAPSULE
 const capsule = document.getElementById('capsule');
@@ -79,6 +125,7 @@ function changegeometry() {
     edges = new THREE.EdgesGeometry(geometry);
     line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: linecolor }));
 
+    // if sats för line och light med variabel från checkboxes
     object.add(line);
     scene.add(object);
     scene.add(light);
@@ -120,8 +167,8 @@ window.addEventListener('resize', () => {
 function animate() {
     requestAnimationFrame(animate);
 
-    object.rotation.y = mx / 150;
-    object.rotation.x = my / 150;
+    object.rotation.y = (mx / 150);
+    object.rotation.x = (my / 150) - 1000;
 
     renderer.render(scene, camera);
 }
