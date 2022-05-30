@@ -70,6 +70,7 @@ object.add(line);
 function changegeometry() {
     scene.remove(object);
     object.remove(line);
+    object.remove(light);
 
     material = new THREE.MeshLambertMaterial({
         color: objectcolor
@@ -86,12 +87,12 @@ function changegeometry() {
 const resetbutton = document.getElementById('resetbutton');
 resetbutton.addEventListener('click', () => {
     console.log("reset");
-    scene.remove(light)
-    scene.remove(object)
+    scene.remove(light);
+    scene.remove(object);
 })
 
-camera.position.z = 5
-object.position.y = -1
+camera.position.z = 5;
+object.position.y = -1;
 
 
 var mx = 0;
@@ -119,8 +120,8 @@ window.addEventListener('resize', () => {
 function animate() {
     requestAnimationFrame(animate);
 
-    object.rotation.y = mx / 200;
-    object.rotation.x = my / 200;
+    object.rotation.y = mx / 150;
+    object.rotation.x = my / 150;
 
     renderer.render(scene, camera);
 }
