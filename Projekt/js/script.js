@@ -1,15 +1,14 @@
 // SCROLLKNAPPAR
-
 const buttonRight = document.getElementById('slideright');
 const buttonLeft = document.getElementById('slideleft');
 const buttonlist = document.getElementById('buttonlist')
 
 buttonRight.onclick = function() {
-    buttonlist.scrollLeft += 700;
+    buttonlist.scrollLeft += 640;
 };
 
 buttonLeft.onclick = function() {
-    buttonlist.scrollLeft -= 700;
+    buttonlist.scrollLeft -= 640;
 };
 
 
@@ -25,16 +24,13 @@ var camera = new THREE.PerspectiveCamera(75, canvaswidth / canvasheight, .01, 10
 // controls.addEventListener('change', renderer);
 
 var renderer = new THREE.WebGLRenderer({
-    alpha: true,
+    alpha: false,
     antialias: true
 });
 renderer.setSize(canvaswidth, canvasheight);
 document.body.appendChild(renderer.domElement);
 
-var linecolor = 0xFFFFFF
-var objectcolor = 0x444B59
-
-var geometry = new THREE.BoxGeometry();
+var geometry;
 
 // GEOMETRIES
 
@@ -43,7 +39,7 @@ const box = document.getElementById('box');
 box.addEventListener('click', () => {
     console.log("box");
     geometry = new THREE.BoxGeometry(2, 2, 2);
-    changegeometry();
+    updateGeometry();
 })
 
 // CONE
@@ -51,7 +47,7 @@ const cone = document.getElementById('cone');
 cone.addEventListener('click', () => {
     console.log("cone");
     geometry = new THREE.ConeGeometry(1.31, 2, 12);
-    changegeometry();
+    updateGeometry();
 })
 
 // ICOSAHEDRON
@@ -59,7 +55,7 @@ const icosahedron = document.getElementById('icosahedron');
 icosahedron.addEventListener('click', () => {
     console.log("icosahedron");
     geometry = new THREE.IcosahedronGeometry(1.5, 0);
-    changegeometry();
+    updateGeometry();
 })
 
 // TORUS
@@ -67,7 +63,7 @@ const torus = document.getElementById('torus');
 torus.addEventListener('click', () => {
     console.log("torus");
     geometry = new THREE.TorusGeometry(1, 0.4, 15, 60);
-    changegeometry();
+    updateGeometry();
 })
 
 // CAPSULE
@@ -75,7 +71,7 @@ const capsule = document.getElementById('capsule');
 capsule.addEventListener('click', () => {
     console.log("capsule");
     geometry = new THREE.CapsuleGeometry(1, 1.5, 2, 5);
-    changegeometry();
+    updateGeometry();
 })
 
 // PYRAMID
@@ -84,7 +80,7 @@ pyramid.addEventListener('click', () => {
     console.log("pyramid");
     // geometry = new THREE.TetrahedronGeometry();
     geometry = new THREE.ConeGeometry(1.3, 2, 4);
-    changegeometry();
+    updateGeometry();
 })
 
 // DODECAHEDRON
@@ -92,7 +88,7 @@ const dodecahedron = document.getElementById('dodecahedron');
 dodecahedron.addEventListener('click', () => {
     console.log("dodecahedron");
     geometry = new THREE.DodecahedronGeometry(1.5, 1);
-    changegeometry();
+    updateGeometry();
 })
 
 // TORUSKNOT
@@ -100,9 +96,22 @@ const torusknot = document.getElementById('torusknot');
 torusknot.addEventListener('click', () => {
     console.log("torusknot");
     geometry = new THREE.TorusKnotGeometry();
-    changegeometry();
+    updateGeometry();
 })
 
+const objectcolorpicker = document.getElementById('colorpicker_obj');
+var objectcolor = 0x444B59;
+
+const linecolorpicker = document.getElementById('colorpicker_line')
+var linecolor = 0xFFFFFF;
+
+function updateColors() {
+    console.log("colorupdate")
+    objectcolor = objectcolorpicker.value;
+    linecolor = linecolorpicker.value;
+    // linecolor = 0xFFFFFF;
+    // objectcolor = 0x444B59;
+}
 
 var material = new THREE.MeshLambertMaterial({
     color: 0xFFFFFF
@@ -113,10 +122,13 @@ var edges = new THREE.EdgesGeometry(geometry);
 var line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: linecolor }));
 object.add(line);
 
-function changegeometry() {
-    scene.remove(object);
+function updateGeometry() {
+
+    updateColors();
+
     object.remove(line);
-    object.remove(light);
+    scene.remove(object);
+    scene.remove(light);
 
     material = new THREE.MeshLambertMaterial({
         color: objectcolor
@@ -126,16 +138,29 @@ function changegeometry() {
     line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: linecolor }));
 
     // if sats för line och light med variabel från checkboxes
-    object.add(line);
+    updateLines();
     scene.add(object);
     scene.add(light);
 }
 
+var lineoption = document.getElementById('lineoption');
+
+function updateLines() {
+    if (lineoption.checked == true) {
+        object.remove(line);
+    } else {
+        object.add(line);
+    }
+}
+
 const resetbutton = document.getElementById('resetbutton');
 resetbutton.addEventListener('click', () => {
-    console.log("reset");
     scene.remove(light);
+    object.remove(line);
     scene.remove(object);
+    linecolor = 0xFFFFFF;
+    objectcolor = 0x444B59;
+    console.log("reset");
 })
 
 camera.position.z = 5;
@@ -151,12 +176,6 @@ function saveMouse(event) {
 }
 
 document.onmousemove = saveMouse;
-
-// window.addEventListener('resize', () => {
-//     renderer.setSize((canvaswidth), (canvasheight));
-//     camera.aspect = canvaswidth / canvasheight;
-//     camera.updateProjectionMatrix();
-// });
 
 window.addEventListener('resize', () => {
     renderer.setSize((window.innerWidth), (window.innerHeight));

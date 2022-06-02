@@ -11,10 +11,10 @@
 
 <body>
     <header id="hej">
-        <h1>3D-VISUALISERING</h1>
+        <h1>3D-VISUALISER</h1>
     </header>
     <section id="visualsection">
-        <h2>Välj modell att visualisera</h2>
+        <h2>Choose object to visualise</h2>
         <section id="geometrysection">
             <button id="slideleft" class="slidebutton" type="button"><img id="arrowleft" src="img/arrow-up-white.svg" alt="pil vänster"></button>
             <article id="geometries">
@@ -50,24 +50,32 @@
     </section>
 
     <aside>
-        <h2 class="second-h2">Alternativ</h2>
+        <h2 class="second-h2">Options</h2>
 
-        <section id="optionsection">
+        <form id="optionsection">
             <article class="option">
-                <label for="lineoption"><p>Contourlines</p></label>
-                <input type="checkbox" class="checkbox" id="lineoption" value="Line">
+                <label for="lineoption"><p>No Contourlines</p></label>
+                <input type="checkbox" onchange="updateLines()" id="lineoption" value="Line">
             </article>
-            <article class="option">
+            <!-- <article class="option">
                 <label for="controloption"><p>Arrow control</p></label>
-                <input type="checkbox" class="checkbox" id="controloption" value="arrowcontrol">
+                <input type="checkbox" id="controloption" value="arrowcontrol">
+            </article> -->
+            <br>
+            <article class="option">
+                <label for="colorpicker_obj"><p>Object Color</p></label>
+                <input type="color" onchange="updateGeometry()" id="colorpicker_obj" value="#444B59">
             </article>
             <br>
             <article class="option">
-                <label for="controloption"><p>Object color</p></label>
-                <input type="color" class="userinput" id="controloption" value="#444B59">
+                <label for="colorpicker_line"><p>Line Color</p></label>
+                <input type="color" onchange="updateGeometry()" id="colorpicker_line" value="#FFFFFF">
             </article>
-        </section>
-        <button id="resetbutton"><p>Reset</p></button>
+        </form>
+        <div>
+            <!-- <button id="applybutton" onclick="updateGeometry()"><p>Apply</p></button> -->
+            <button id="resetbutton" onclick="updateGeometry()"><p>Reset All</p></button>
+        </div>
     </aside>
 
     <script src="./js/three.js"></script>

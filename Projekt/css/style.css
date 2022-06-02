@@ -22,6 +22,7 @@ h2 {
 
 .second-h2 {
     font-size: 1rem;
+    margin: 0;
 }
 
 body {
@@ -113,10 +114,10 @@ button:hover p {
 }
 
 aside {
-    height: 250px;
+    height: 350px;
     width: 175px;
     position: absolute;
-    top: 225px;
+    top: 150px;
     right: 0px;
     display: flex;
     flex-direction: column;
@@ -143,17 +144,14 @@ aside {
     align-items: center;
 }
 
-.userinput {
-    margin-left: 10px;
-}
-
 label p {
     font-size: 0.875rem;
     line-height: 1.5625rem;
     color: whitesmoke;
 }
 
-#resetbutton {
+#resetbutton,
+#applybutton {
     width: 80px;
     height: 40px;
 }
