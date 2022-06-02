@@ -12,8 +12,21 @@ buttonLeft.onclick = function() {
 };
 
 
-// THREE.JS
+// ASIDE
+const aside = document.getElementById('aside');
+const burger = document.getElementById('burger');
 
+function toggleAside() {
+    aside.classList.toggle('aside-inactive');
+    burger.classList.toggle('crossed_line');
+}
+
+burger.addEventListener('click', () => {
+    toggleAside();
+})
+
+
+// THREE.JS
 const canvasheight = window.innerHeight - 300
 const canvaswidth = window.innerWidth
 
@@ -27,7 +40,9 @@ var renderer = new THREE.WebGLRenderer({
     alpha: false,
     antialias: true
 });
+
 renderer.setSize(canvaswidth, canvasheight);
+// renderer.localClippingEnabled = true;
 document.body.appendChild(renderer.domElement);
 
 var geometry;
@@ -113,14 +128,31 @@ function updateColors() {
     // objectcolor = 0x444B59;
 }
 
-var material = new THREE.MeshLambertMaterial({
-    color: 0xFFFFFF
-});
+// var material = new THREE.MeshLambertMaterial({
+var material = new THREE.MeshLambertMaterial();
 var object = new THREE.Mesh(geometry, material);
 var light = new THREE.HemisphereLight(0xFFFFFF, 0x000000, 1);
-var edges = new THREE.EdgesGeometry(geometry);
-var line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: linecolor }));
-object.add(line);
+var edge;
+var line;
+
+// var localPlane = new THREE.Plane(new THREE.Vector3(0, -2, 0), 0);
+
+const wireframeoption = document.getElementById('wireframeoption');
+
+function setMaterial() {
+    if (wireframeoption.checked == true) {
+        material = new THREE.MeshLambertMaterial({
+            wireframe: true
+
+            // clippingPlanes: [localPlane]
+        });
+    } else {
+        material = new THREE.MeshLambertMaterial({
+            color: objectcolor
+
+        });
+    }
+}
 
 function updateGeometry() {
 
@@ -130,9 +162,8 @@ function updateGeometry() {
     scene.remove(object);
     scene.remove(light);
 
-    material = new THREE.MeshLambertMaterial({
-        color: objectcolor
-    });
+    setMaterial()
+
     object = new THREE.Mesh(geometry, material);
     edges = new THREE.EdgesGeometry(geometry);
     line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: linecolor }));
@@ -143,7 +174,7 @@ function updateGeometry() {
     scene.add(light);
 }
 
-var lineoption = document.getElementById('lineoption');
+const lineoption = document.getElementById('lineoption');
 
 function updateLines() {
     if (lineoption.checked == true) {
@@ -186,6 +217,9 @@ window.addEventListener('resize', () => {
 function animate() {
     requestAnimationFrame(animate);
 
+    // localPlane.rotation.y = (mx / 150);
+    // localPlane.rotation.x = (my / 150) - 1000;
+    // localPlane.setComponents(mx / 100, 0, my / 100, 0);
     object.rotation.y = (mx / 150);
     object.rotation.x = (my / 150) - 1000;
 

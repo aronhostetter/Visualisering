@@ -12,6 +12,12 @@
 <body>
     <header id="hej">
         <h1>3D-VISUALISER</h1>
+
+        <div id="burger">
+            <div id="line_1" class="burger_line"></div>
+            <div id="line_2" class="burger_line"></div>
+            <div id="line_3" class="burger_line"></div>
+        </div>
     </header>
     <section id="visualsection">
         <h2>Choose object to visualise</h2>
@@ -49,18 +55,18 @@
         </section>
     </section>
 
-    <aside>
+    <aside id="aside" class="aside-inactive">
         <h2 class="second-h2">Options</h2>
 
         <form id="optionsection">
             <article class="option">
                 <label for="lineoption"><p>No Contourlines</p></label>
-                <input type="checkbox" onchange="updateLines()" id="lineoption" value="Line">
+                <input type="checkbox" onchange="updateGeometry()" id="lineoption" value="Line">
             </article>
-            <!-- <article class="option">
-                <label for="controloption"><p>Arrow control</p></label>
-                <input type="checkbox" id="controloption" value="arrowcontrol">
-            </article> -->
+            <article class="option">
+                <label for="controloption"><p>Wireframe</p></label>
+                <input type="checkbox" onchange="updateGeometry()" id="wireframeoption" value="wireframe">
+            </article>
             <br>
             <article class="option">
                 <label for="colorpicker_obj"><p>Object Color</p></label>
