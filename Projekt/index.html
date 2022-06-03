@@ -1,125 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PROJEKT</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-<body>
+  <body>
     <header id="hej">
-        <h1>3D-VISUALISER</h1>
+      <h1>3D-VISUALISER</h1>
 
-        <div id="burger">
-            <div id="line_1" class="burger_line"></div>
-            <div id="line_2" class="burger_line"></div>
-            <div id="line_3" class="burger_line"></div>
-        </div>
+      <div id="burger">
+        <div id="line_1" class="burger_line"></div>
+
+        <div id="line_2" class="burger_line"></div>
+
+        <div id="line_3" class="burger_line"></div>
+      </div>
     </header>
+
     <section id="visualsection">
-        <h2>Choose object to visualise</h2>
-        <section id="geometrysection">
-            <button id="slideleft" class="slidebutton arrow-disabled" type="button"><img id="arrowleft" src="img/arrow-up-white.svg" alt="pil vänster"></button>
+      <h2>Choose object to visualise</h2>
 
-            <article id="geometries">
-                <ul id="buttonlist">
-                    <li>
-                        <button id="box"><p>Box</p></button>
-                    </li>
-                    <li>
-                        <button id="cone"><p>Cone</p></button>
-                    </li>
-                    <li>
-                        <button id="icosahedron"><p>Icosahedron</p></button>
-                    </li>
-                    <li>
-                        <button id="capsule"><p>Capsule</p></button>
-                    </li>
-                    <li>
-                        <button id="pyramid"><p>Pyramid</p></button>
-                    </li>
-                    <li>
-                        <button id="torus"><p>Torus</p></button>
-                    </li>
-                    <li>
-                        <button id="dodecahedron"><p>Dodecahedron</p></button>
-                    </li>
-                    <li>
-                        <button id="torusknot"><p>Torusknot</p></button>
-                    </li>
-                </ul>
-            </article>
+      <section id="geometrysection">
+        <button id="slideleft" class="slidebutton arrow-disabled" type="button">
+          <img id="arrowleft" src="img/arrow-up-white.svg" alt="pil vänster" />
+        </button>
 
-            <button id="slideright" class="slidebutton" type="button"><img id="arrowright" src="img/arrow-up-white.svg" alt="pil höger"></button>
-        </section>
+        <article id="geometries">
+          <ul id="buttonlist">
+            <li>
+              <button id="box">
+                <p>Box</p>
+              </button>
+            </li>
+            <li>
+              <button id="cone">
+                <p>Cone</p>
+              </button>
+            </li>
+            <li>
+              <button id="icosahedron">
+                <p>Icosahedron</p>
+              </button>
+            </li>
+            <li>
+              <button id="capsule">
+                <p>Capsule</p>
+              </button>
+            </li>
+            <li>
+              <button id="pyramid">
+                <p>Pyramid</p>
+              </button>
+            </li>
+            <li>
+              <button id="torus">
+                <p>Torus</p>
+              </button>
+            </li>
+            <li>
+              <button id="dodecahedron">
+                <p>Dodecahedron</p>
+              </button>
+            </li>
+            <li>
+              <button id="torusknot">
+                <p>Torusknot</p>
+              </button>
+            </li>
+          </ul>
+        </article>
+
+        <button id="slideright" class="slidebutton" type="button">
+          <img id="arrowright" src="img/arrow-up-white.svg" alt="pil höger" />
+        </button>
+      </section>
     </section>
 
     <aside id="aside" class="aside-inactive">
-        <h2 class="second-h2">Options</h2>
+      <h2 class="second-h2">Options</h2>
 
-        <form id="optionsection">
-            <article class="option">
-                <label for="lineoption"><p>No Contourlines</p></label>
-                <input type="checkbox" onchange="updateGeometry()" id="lineoption" value="Line">
-            </article>
+      <form id="optionsection">
+        <article class="option">
+          <label for="lineoption"><p>No Contourlines</p> </label>
 
-            <article class="option">
-                <label for="wireframeoption"><p>Wireframe</p></label>
-                <input type="checkbox" onchange="updateGeometry()" id="wireframeoption" value="wireframe">
-            </article>
+          <input
+            type="checkbox"
+            onchange="updateGeometry()"
+            id="lineoption"
+            value="Line"
+          />
+        </article>
 
-            <article class="option">
-                <label for="controloption"><p>Mouse control</p></label>
-                <input type="checkbox" onchange="updateGeometry()" id="controloption" value="mousecontrol">
-            </article>
+        <article class="option">
+          <label for="wireframeoption">
+            <p>Wireframe</p>
+          </label>
 
-            <br>
+          <input
+            type="checkbox"
+            onchange="updateGeometry()"
+            id="wireframeoption"
+            value="wireframe"
+          />
+        </article>
 
-            <section id="controlsection">
+        <article class="option">
+          <label for="controloption">
+            <p>Mouse control</p>
+          </label>
 
-                <article class="option">
-                    <label for="ycontrol"><p>Full Rotation</p></label>
-                    <input type="radio" name="xycontrol" onchange="updateGeometry()" id="xycontrol" value="xycontrol" checked>
-                </article>
+          <input
+            type="checkbox"
+            onchange="updateGeometry()"
+            id="controloption"
+            value="mousecontrol"
+          />
+        </article>
 
-                <article class="option">
-                    <label for="xcontrol"><p>Horizontal Rotation</p></label>
-                    <input type="radio" name="xycontrol" onchange="updateGeometry()" id="xcontrol" value="xcontrol">
-                </article>
+        <br />
 
-                <article class="option">
-                    <label for="ycontrol"><p>Vertical Rotation</p></label>
-                    <input type="radio" name="xycontrol" onchange="updateGeometry()" id="ycontrol" value="ycontrol">
-                </article>
-            </section>
+        <section id="controlsection">
+          <article class="option">
+            <label for="ycontrol">
+              <p>Full Rotation</p>
+            </label>
 
-            <br>
+            <input
+              type="radio"
+              name="xycontrol"
+              onchange="updateGeometry()"
+              id="xycontrol"
+              value="xycontrol"
+              checked
+            />
+          </article>
 
-            <article class="option">
-                <label for="colorpicker_obj"><p>Object Color</p></label>
-                <input type="color" onchange="updateGeometry()" id="colorpicker_obj" value="#444B59">
-            </article>
+          <article class="option">
+            <label for="xcontrol">
+              <p>Vertical Rotation</p>
+            </label>
 
-            <br>
+            <input
+              type="radio"
+              name="xycontrol"
+              onchange="updateGeometry()"
+              id="xcontrol"
+              value="xcontrol"
+            />
+          </article>
 
-            <article class="option">
-                <label for="colorpicker_line"><p>Line Color</p></label>
-                <input type="color" onchange="updateGeometry()" id="colorpicker_line" value="#FFFFFF">
-            </article>
-        </form>
+          <article class="option">
+            <label for="ycontrol">
+              <p>Horizontal Rotation</p>
+            </label>
 
-        <div>
-            <!-- <button id="applybutton" onclick="updateGeometry()"><p>Apply</p></button> -->
-            <button id="resetbutton" onclick="updateGeometry()"><p>Reset All</p></button>
-        </div>
+            <input
+              type="radio"
+              name="xycontrol"
+              onchange="updateGeometry()"
+              id="ycontrol"
+              value="ycontrol"
+            />
+          </article>
+        </section>
+
+        <br />
+
+        <article class="option">
+          <label for="colorpicker_obj"><p>Object Color</p></label>
+
+          <input
+            type="color"
+            onchange="updateGeometry()"
+            id="colorpicker_obj"
+            value="#444B59"
+          />
+        </article>
+
+        <br />
+
+        <article class="option">
+          <label for="colorpicker_line"><p>Line Color</p></label>
+
+          <input
+            type="color"
+            onchange="updateGeometry()"
+            id="colorpicker_line"
+            value="#FFFFFF"
+          />
+        </article>
+      </form>
+
+      <div>
+        <button id="resetbutton" onclick="updateGeometry()">
+          <p>Reset All</p>
+        </button>
+      </div>
     </aside>
 
     <script src="./js/three.js"></script>
-    <!-- <script src="./OrbitControls.js"></script> -->
     <script src="./js/script.js"></script>
-</body>
-
+  </body>
 </html>
