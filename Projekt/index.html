@@ -22,7 +22,8 @@
     <section id="visualsection">
         <h2>Choose object to visualise</h2>
         <section id="geometrysection">
-            <button id="slideleft" class="slidebutton" type="button"><img id="arrowleft" src="img/arrow-up-white.svg" alt="pil vänster"></button>
+            <button id="slideleft" class="slidebutton arrow-disabled" type="button"><img id="arrowleft" src="img/arrow-up-white.svg" alt="pil vänster"></button>
+
             <article id="geometries">
                 <ul id="buttonlist">
                     <li>
@@ -51,6 +52,7 @@
                     </li>
                 </ul>
             </article>
+
             <button id="slideright" class="slidebutton" type="button"><img id="arrowright" src="img/arrow-up-white.svg" alt="pil höger"></button>
         </section>
     </section>
@@ -63,21 +65,52 @@
                 <label for="lineoption"><p>No Contourlines</p></label>
                 <input type="checkbox" onchange="updateGeometry()" id="lineoption" value="Line">
             </article>
+
             <article class="option">
-                <label for="controloption"><p>Wireframe</p></label>
+                <label for="wireframeoption"><p>Wireframe</p></label>
                 <input type="checkbox" onchange="updateGeometry()" id="wireframeoption" value="wireframe">
             </article>
+
+            <article class="option">
+                <label for="controloption"><p>Mouse control</p></label>
+                <input type="checkbox" onchange="updateGeometry()" id="controloption" value="mousecontrol">
+            </article>
+
             <br>
+
+            <section id="controlsection">
+
+                <article class="option">
+                    <label for="ycontrol"><p>Full Rotation</p></label>
+                    <input type="radio" name="xycontrol" onchange="updateGeometry()" id="xycontrol" value="xycontrol" checked>
+                </article>
+
+                <article class="option">
+                    <label for="xcontrol"><p>Horizontal Rotation</p></label>
+                    <input type="radio" name="xycontrol" onchange="updateGeometry()" id="xcontrol" value="xcontrol">
+                </article>
+
+                <article class="option">
+                    <label for="ycontrol"><p>Vertical Rotation</p></label>
+                    <input type="radio" name="xycontrol" onchange="updateGeometry()" id="ycontrol" value="ycontrol">
+                </article>
+            </section>
+
+            <br>
+
             <article class="option">
                 <label for="colorpicker_obj"><p>Object Color</p></label>
                 <input type="color" onchange="updateGeometry()" id="colorpicker_obj" value="#444B59">
             </article>
+
             <br>
+
             <article class="option">
                 <label for="colorpicker_line"><p>Line Color</p></label>
                 <input type="color" onchange="updateGeometry()" id="colorpicker_line" value="#FFFFFF">
             </article>
         </form>
+
         <div>
             <!-- <button id="applybutton" onclick="updateGeometry()"><p>Apply</p></button> -->
             <button id="resetbutton" onclick="updateGeometry()"><p>Reset All</p></button>

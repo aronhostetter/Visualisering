@@ -2,7 +2,7 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin: 0;
     padding: 0;
-    transition: 0.4s;
+    transition: 0.3s;
     scroll-behavior: smooth;
 }
 
@@ -64,7 +64,6 @@ header {
     background-color: black;
     margin: 7px;
     border-radius: 3px;
-    transition: all 0.4s;
 }
 
 .crossed_line #line_2 {
@@ -149,6 +148,15 @@ button:hover p {
     transform: rotate(-90deg);
 }
 
+.arrow-disabled {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.arrow-disabled:hover {
+    border: 0px;
+}
+
 .aside-inactive {
     opacity: 0;
 }
@@ -176,6 +184,14 @@ button:hover p {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+}
+
+#controlsection {
+    transform: scaleY(0);
+    height: 0;
+    animation: fade 0.2;
+    opacity: 1;
+    pointer-events: none;
 }
 
 .option {
